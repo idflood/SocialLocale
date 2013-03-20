@@ -7,11 +7,13 @@ SocialLocale is a small javascript library to translate these language code. It 
 
 ex:
 
-  // print: en_US
-  console.log(SocialLocale.toFacebookLocale("en"));
+```javascript
+// print: en_US
+console.log(SocialLocale.toFacebookLocale("en"));
 
-  // or you can do something like that
-  var locale = SocialLocale.toFacebookLocale($("html").attr("lang"));
-  if (locale) {
-    bt_url += "?lang=" + locale
-  }
+// or you can do something like that
+var locale = SocialLocale.toFacebookLocale($("html").attr("lang"));
+if (locale) {
+  bt_url += "?lang=" + locale
+}
+```
