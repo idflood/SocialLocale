@@ -10,6 +10,17 @@
       return SocialLocale.toLocale(locale, "google");
     },
 
+    toClassLocale: function(locale) {
+      // Usefull when adding the locale as a class to an html element
+      // It return the fb locale if it exists
+      // if not take the google locale and replace "-" with "_" to have the same format as fb
+      var loc = SocialLocale.toLocale(locale, "facebook") || SocialLocale.toLocale(locale, "google");
+      if (loc) {
+        return loc.replace(/-/gi, "_");
+      }
+      return false;
+    },
+
     toLocale: function(locale, type) {
       var parts = locale.split("-");
       var GOOGLE = (type === "google");
