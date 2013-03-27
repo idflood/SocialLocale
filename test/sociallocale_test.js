@@ -149,4 +149,15 @@
 		equal(SocialLocale.toGoogleLocale("tl"), 'fil');
 	});
 
+	module('testTwitter');
+
+	test( 'unsupported language code', function() {
+		equal(SocialLocale.toTwitterLocale("endefr"), false);
+		equal(SocialLocale.toTwitterLocale("gu"), false);
+	});
+
+	test( 'filipino', function() {
+		equal(SocialLocale.toGoogleLocale("fil"), 'fil');
+	});
+
 }( jQuery ));
