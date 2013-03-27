@@ -1,4 +1,4 @@
-/*! SocialLocale - v0.0.1 - 2013-03-21
+/*! SocialLocale - v0.0.1 - 2013-03-27
 * https://github.com/idflood/SocialLocale
 * Copyright (c) 2013 idflood; Licensed MIT */
 
@@ -11,6 +11,10 @@
 
     toGoogleLocale: function(locale) {
       return SocialLocale.toLocale(locale, "google");
+    },
+
+    toTwitterLocale: function(locale) {
+      return SocialLocale.toLocale(locale, "twitter");
     },
 
     toClassLocale: function(locale) {
@@ -27,11 +31,15 @@
     toLocale: function(locale, type) {
       var parts = locale.split("-");
       var GOOGLE = (type === "google");
+      var TWITTER = (type === "twitter");
 
       // The first element is the language code
       switch (parts[0]) {
         // African
         case "af":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "af";
           }
@@ -77,7 +85,7 @@
         case "pga":
         case "shu":
         case "ssh":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "ar";
           }
           return "ar_AR";
@@ -86,20 +94,23 @@
         case "az":
         case "azb":
         case "azj":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "az_AZ";
 
         // Belarusian
         case "be":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "be_BY";
 
         // Bulgarian
         case "bg":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "bg";
           }
@@ -107,6 +118,9 @@
 
         // Bengali
         case "bn":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "bn";
           }
@@ -114,13 +128,16 @@
 
         // Bosnian
         case "bs":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "bs_BA";
 
         // Catalan
         case "ca":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "ca";
           }
@@ -128,6 +145,9 @@
 
         // Czech
         case "cs":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "cz";
           }
@@ -135,27 +155,30 @@
 
         // Welsh
         case "cy":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "cy_GB";
 
         // Danish
         case "da":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "da";
           }
           return "da_DK";
 
         // German
         case "de":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "de";
           }
           return "de_DE";
 
         // Greek
         case "el":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "el";
           }
@@ -163,6 +186,9 @@
 
         // English
         case "en":
+          if (TWITTER) {
+            return "en";
+          }
           if (GOOGLE) {
             if (parts.length > 1 && parts[1] === "GB") {
               return "en-GB";
@@ -186,6 +212,9 @@
 
         // Spanish
         case "es":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             if ((parts.length > 1) ) {
               if (parts[1] === "LA" || parts[1] === "419") {
@@ -206,6 +235,9 @@
         // ET is a macro language
         case "ekk":
         case "vro":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "et";
           }
@@ -213,6 +245,9 @@
 
         // Basque
         case "eu":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "eu";
           }
@@ -223,7 +258,7 @@
         // Persian is a macro language
         case "pes":
         case "prs":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "fa";
           }
           return "fa_IR";
@@ -232,27 +267,30 @@
         // Facebook has "Leet Speak" support but not html.
         // In html fb is not a language code but it is used by fb
         case "fb":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "fb_LT";
 
         // Finnish
         case "fi":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "fi";
           }
           return "fi_FI";
 
         // Faroese
         case "fo":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "fo_FO";
 
         // French
         case "fr":
+          if (TWITTER) {
+            return "fr";
+          }
           if (GOOGLE) {
             if (parts.length > 1) {
               if (parts[1] === "CA") {
@@ -270,20 +308,23 @@
 
         // Frisian
         case "fy":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "fy_NL";
 
         // Irish
         case "ga":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "ga_IE";
 
         // Galician
         case "gl":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "gl";
           }
@@ -298,6 +339,9 @@
 
         // Hebrew
         case "he":
+          if (TWITTER) {
+            return "he";
+          }
           if (GOOGLE) {
             return "iw";
           }
@@ -305,13 +349,16 @@
 
         // Hindi
         case "hi":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "hi";
           }
           return "hi_IN";
 
         // Croatian
         case "hr":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "hr";
           }
@@ -319,27 +366,30 @@
 
         // Hungarian
         case "hu":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "hu";
           }
           return "hu_HU";
 
         // Armenian
         case "hy":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "hy_AM";
 
         // Indonesian
         case "id":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "id";
           }
           return "id_ID";
 
         // Icelandic
         case "is":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "is";
           }
@@ -347,42 +397,42 @@
 
         // Italian
         case "it":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "it";
           }
           return "it_IT";
 
         // Japanese
         case "ja":
-          if (GOOGLE) {
-            return "js";
+          if (GOOGLE || TWITTER) {
+            return "ja";
           }
           return "ja_JP";
 
         // Georgian
         case "ka":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "ka_GE";
 
         // Khmer
         case "km":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "km_KH";
 
         // Kannada
         case "kn":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "kn";
           }
           return false;
 
         // Korean
         case "ko":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "ko";
           }
           return "ko_KR";
@@ -393,20 +443,23 @@
         case "ckb":
         case "kmr":
         case "sdh":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "ku_TR";
 
         // Latin
         case "la":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "la_VA";
 
         // Lithuanian
         case "lt":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "lt";
           }
@@ -417,6 +470,9 @@
         // Latvian is generic, has two more subtags
         case "ltg":
         case "lvs":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "lv";
           }
@@ -424,13 +480,16 @@
 
         // Macedonian
         case "mk":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "mk_MK";
 
         // Malayalam
         case "ml":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "ml";
           }
@@ -483,6 +542,9 @@
         case "zlm":
         case "zmi":
         case "zsm":
+          if (TWITTER) {
+            return "msa";
+          }
           if (GOOGLE) {
             return "ms";
           }
@@ -490,7 +552,7 @@
 
         // Norwegian (bokmal)
         case "nb":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "no";
           }
           return "nb_NO";
@@ -500,35 +562,35 @@
         // NE is a macrolanguage
         case "dty":
         case "npi":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "ne_NP";
 
         // Dutch
         case  "nl":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "nl";
           }
           return "nl_NL";
 
         // Norwegian (nynorsk)
         case "nn":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "nn_NO";
 
         // Punjabi
         case "pa":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "pa_IN";
 
         // Polish
         case "pl":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "pl";
           }
           return "pl_PL";
@@ -546,6 +608,9 @@
 
         // Portuguese
         case "pt":
+          if (TWITTER) {
+            return "pt";
+          }
           if (GOOGLE) {
             if (parts.length > 1 && parts[1] === "BR") {
               return "pt-BR";
@@ -559,6 +624,9 @@
 
         // Romanian
         case "ro":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "ro";
           }
@@ -566,13 +634,16 @@
 
         // Russian
         case "ru":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "ru";
           }
           return "ru_RU";
 
         // Slovak
         case "sk":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "sk";
           }
@@ -580,6 +651,9 @@
 
         // Slovenian
         case "sl":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "sl";
           }
@@ -592,13 +666,16 @@
         case "aat":
         case "aln":
         case "als":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return false;
           }
           return "sq_AL";
 
         // Serbian
         case "sr":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "sr";
           }
@@ -606,7 +683,7 @@
 
         // Swedish
         case "sv":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "sv";
           }
           return "sv_SE";
@@ -616,6 +693,9 @@
         // SW is a macro language
         case "swc":
         case "swh":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "sw";
           }
@@ -623,6 +703,9 @@
 
         // Tamil
         case "ta":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "ta";
           }
@@ -630,6 +713,9 @@
 
         // Telugu
         case "te":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "te";
           }
@@ -637,27 +723,34 @@
 
         // Thai
         case "th":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "th";
           }
           return "th_TH";
 
         // Filipino
+        // Todo: check this...
+        // google and twitter accept Filipino language
+        // facebook tagalog ?
         case "tl":
-          if (GOOGLE) {
+        case "fil":
+          if (GOOGLE || TWITTER) {
             return "fil";
           }
           return "tl_PH";
 
         // Turkish
         case "tr":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "tr";
           }
           return "tr_TR";
 
         // Ukrainian
         case "uk":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "uk";
           }
@@ -665,13 +758,16 @@
 
         // Urdu
         case "ur":
-          if (GOOGLE) {
+          if (GOOGLE || TWITTER) {
             return "ur";
           }
           return false;
 
         // Vietnamese
         case "vi":
+          if (TWITTER) {
+            return false;
+          }
           if (GOOGLE) {
             return "vi";
           }
@@ -694,6 +790,14 @@
         case "nan":
         case "wuu":
         case "yue":
+          if (TWITTER) {
+            if (parts.length > 1) {
+              if (parts[1] === "TW") {
+                return "zh-tw";
+              }
+            }
+            return "zh-cn";
+          }
           if (GOOGLE) {
             if (parts.length > 1) {
               if (parts[1] === "HK" || parts[1] === "TW") {
